@@ -5,7 +5,7 @@
     <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-<body ng-entity="Invoice;Customer" ng-init="invoices = Invoice.all();customers = Customer.all()">
+<body ng-auth="eager" ng-entity="Invoice;Customer" ng-init="invoices = Invoice.all();customers = Customer.all()">
     <div id="body">
 
     <h1>Invoices</h1>

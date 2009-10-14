@@ -6,7 +6,8 @@
   <title>Tasks</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-<body ng-entity="task=Task"
+<body ng-auth="eager" 
+      ng-entity="task=Task"
       ng-init="tasks=Task.all();
       users=['Terron', 'Justin', 'Sam', 'Matt', 'Jeremy', 'Sarah', 'Gabriella', 'Mike'].sort()"
       style="display:none;" ng-show="true">

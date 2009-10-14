@@ -7,7 +7,7 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body ng-entity="invoice=Invoice:{items:[{}]}; Customer" ng-init="customers = Customer.all()">
+<body ng-auth="eager" ng-entity="invoice=Invoice:{items:[{}]}; Customer" ng-init="customers = Customer.all()">
 <div id="body">
 [ <a href="index.html">List All Invoices</a> ]
   <h1>Invoice# {{invoice.no}}</h1>

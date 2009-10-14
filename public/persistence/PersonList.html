@@ -4,7 +4,7 @@
     <title>All People</title>
     <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
   </head>
-  <body ng-entity="Person" ng-init="persons = Person.all()">
+  <body ng-auth="eager" ng-entity="Person" ng-init="persons = Person.all()">
     <h1>People</h1>
     <p>[ <a href="Person.html">Add Person</a> ]</p>
 <ul>

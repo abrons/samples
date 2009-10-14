@@ -8,6 +8,7 @@
 </head>
 
 <body style="display:none;"
+      ng-auth="eager" 
       ng-entity="employee=Employee"
       ng-init="reports=Employee.query('managerId', $anchor.employee);allEmployees = Employee.all()">
    <div class="body">
