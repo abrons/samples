@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+  </head>
+  <body style="background-color: #DDDDDD;">
+   <div ng-init="dataPie = {title:'Title', series:[{label:['A','a'], values:[75,25]}, {label:['B','b'], values:[25, 75]}]}"></div>
+   <div ng-init="data = {title:['Title','Sub'], series:[{label:'A', color:'FF0000', values:[15,25]}, {label:'B', color:'00FF00', values:[25, 5]}]}"></div>
+   <h1>Google Charts</h1>
+   <h2>Pie</h2>
+   {{ dataPie | chart.pie:300:100 }}
+   {{ dataPie | chart.pie3d:300:100 }}
+   {{ dataPie | chart.pieConcentric:300:100 }}
+   
+   <h2>Bars</h2>
+   {{ data | chart.barHorizontalStacked }}
+   {{ data | chart.barHorizontalGrouped }}
+   {{ data | chart.barVerticalGrouped }}
+   {{ data | chart.barVerticalGrouped }}
+   <h2>Line</h2>
+   {{ data | chart.line }}
+   <h2>Scatter</h2>
+   {{ data | chart.scatter }}
+  </body>
+</html>

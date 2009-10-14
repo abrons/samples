@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>All Invoices</title>
+    <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-entity="customer=Customer" ng-init="customers = Customer.all()">
+    <div id="body">
+
+    <h1>Customers Detail: {{customer.name}}</h1>
+    [ <a href="#">Add Customer</a> ] [ <a href="index.html">List Invoices</a> ]
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>Name:</td>
+        <td><input name="customer.name" /></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td><input name="customer.address1" /></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input name="customer.address2"/></td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td><input name="customer.phone" ng-validate="phone"/></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input name="customer.email" ng-validate="email"/></td>
+      </tr>
+      <tr>
+        <td>Website</td>
+        <td><input name="customer.website" ng-validate="url"/></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" value="save"/></td>
+      </tr>
+    </table>
+
+
+    <h1>All Customers</h1>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th scope="col">Customer</th>
+        <th scope="col">Address</th>
+      </tr>
+      <tr ng-repeat="customer in customers">
+        <td class="content"><a href="#customer={{customer.$id}}">{{customer.name}}</a></td>
+        <td class="content">{{customer.address1}} <br/> {{customer.address2}}</td>
+      </tr>
+    </table>
+    </div>
+    <div align="center">[ <a href="..">index</a> ]    </div>
+</body>
+</html>

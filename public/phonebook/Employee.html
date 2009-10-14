@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+<link href="phone.css" rel="stylesheet" type="text/css" />
+<title>Employee: {{employee.lastName}}, {{employee.firstName}}</title>
+</head>
+
+<body style="display:none;"
+      ng-entity="employee=Employee"
+      ng-init="reports=Employee.query('managerId', $anchor.employee);allEmployees = Employee.all()">
+   <div class="body">
+    <h1>Internal Company Phone-Book</h1>
+    <div class="photo">{{employee.picture|image}} <br />
+    <input name="employee.picture" type="file" />
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="label">First:</td>
+        <td><input name="employee.firstName" type="text" ng-required/></td>
+      </tr>
+      <tr>
+        <td class="label">Middle:</td>
+        <td><input name="employee.middleName" type="text"/></td>
+      </tr>
+      <tr>
+        <td class="label">Last:</td>
+        <td><input name="employee.lastName" type="text"  ng-required/></td>
+      </tr>
+      <tr>
+        <td class="label" nowrap>Hire Date:</td>
+        <td><input name="employee.hireDate" type="text" ng-required ng-widget="datepicker"/></td>
+      </tr>
+      <tr>
+        <td class="label">Manager</td>
+        <td>
+          <select name="employee.managerId">
+            <option value="">-- Chose --</option>
+            <option ng-repeat="person in allEmployees"  value="{{person.$id}}">{{person.firstName}} {{person.lastName}}</option>
+          </select> <span ng-show="employee.managerId">[ <a href="#employee={{employee.managerId}}">View Manager</a> ]</span> </td>
+      </tr>
+      <tr>
+        <td class="label">Reports</td>
+        <td><ul>
+          <li ng-repeat="report in reports">
+             <a href="Employee.html#employee={{report.$id}}">{{report.lastName}}, {{report.firstName}}</a>            </li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td class="label">Address:</td>
+        <td>
+          <input name="employee.address1" type="text"/>
+          <br/>
+          <input name="employee.address2" type="text" />      </td>
+      </tr>
+      <tr>
+        <td class="label">Phone:</td>
+        <td><div ng-repeat="phone in employee.phones">
+          <select name="phone.type">
+            <option value="mobile">Mobile</option>
+            <option value="work">Work</option>
+            <option value="home">Home</option>
+          </select>
+          <input name="phone.phone" type="text" />
+          [<a href="#" ng-action="employee.phones.remove(phone)">X</a>]
+          </div>
+          [<a href="#" ng-action="employee.phones.add()">Add Phone</a>]					</td>
+      </tr>
+      <tr>
+        <td class="label">eMail:</td>
+        <td><div ng-repeat="email in employee.emails">
+          <select name="email.type">
+            <option value="work">Work</option>
+            <option value="home">Home</option>
+          </select>
+          <input name="email.email" type="text" />
+          [<a href="#" ng-action="employee.emails.remove(email)">X</a>]
+          </div>
+          [<a href="#" ng-action="employee.emails.add()">Add Email</a>]				</td>
+      </tr>
+      <tr>
+        <td class="label">&nbsp;</td>
+        <td></td>
+      </tr>
+    </table>
+    <p>
+      <input name="Save" type="submit"/>
+    [ <a href="index.html">index</a> ]    </p>
+    <h1>...:::</h1>
+  </div>
+  <pre>{{employee}}</pre>
+  <pre>{{reports}}</pre>
+</body>
+</html>

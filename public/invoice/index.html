@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>All Invoices</title>
+    <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-entity="Invoice;Customer" ng-init="invoices = Invoice.all();customers = Customer.all()">
+    <div id="body">
+
+    <h1>Invoices</h1>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th scope="col">Seq</th>
+        <th scope="col">Invoice #</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Date</th>
+        <th scope="col">Total</th>
+      </tr>
+      <tr ng-repeat="invoice in invoices">
+        <th scope="row">{{$index + 1}}</th>
+        <td class="content"><a href="Invoice.html#invoice={{invoice.$id}}">{{invoice.no}}</a></td>
+        <td class="content">{{customers.findById(invoice.customerId).name}}</td>
+        <td class="content">{{invoice.date}}</td>
+        <td class="content">{{invoice.total|currency}}</td>
+      </tr>
+      <tr>
+        <td>( <a href="Invoice.html">Create Invoice</a> )</td>
+        <td colspan="3">Total:</td>
+        <td>{{invoices.sum('total')|currency}}</td>
+      </tr>
+    </table>
+    [ <a href="Customers.html">Customers</a> ]
+    </div>
+    <div align="center">[ <a href="..">index</a> ]    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+body {
+  font-size:12px;
+  font-family: verdana,arial,sans-serif;
+  color:#545454;
+  margin: 1em 5em;
+}
+
+div.task {
+  border: thin solid black;
+  display: inline-block;
+  padding: .5em;
+  margin: 0 auto;
+}
+
+.task > div:first-child {
+  background-color: silver;
+  padding: .5em;
+  color: black;
+  font-weight: bold;
+  border: thin solid black;
+  margin-bottom: 1em;
+}
+
+div.task  * {
+  display: block;
+  padding: 2px;
+}
+
+.task ul {
+  padding: 2px;
+  padding-left: 100px;
+  list-style: none;
+}
+
+.task > label {
+  display: block;
+  padding: 2px;
+  padding-left: 0px;
+}
+
+
+
+textarea {
+  width: 600px;
+  height: 80px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+label {
+  width: 95px;
+  float: left;
+  text-align: right;
+  padding-right: .5em;
+  font-weight: bold;
+}
+
+div {
+  min-height: 1.5em;
+}
+
+div.comment {
+  background-color: silver;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  padding: 5px;
+}
+
+textarea.comment {
+  width: 600px;
+  height: 40px;
+}
+
+li {
+  background-color: whiteSmoke;
+  margin-top: 5px;
+  padding: 3px;
+}
+
+li a {
+  display: block;
+  text-align: right;
+  border-bottom: thin solid black;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+td, th {
+  border: thin solid gray;
+  padding: .4em 1em;
+}
+
+th {
+ background-color: #d3d3d3;
+}
+
+.fire {
+  background-color: #FFCCCC;
+}
+
+.high {
+  background-color: #FFFF99;
+}
+
+.medium {
+  background-color: #66FFCC;
+}
+
+.low {
+  background-color: White;
+}
+
+.footnote {
+  text-align: center;
+  padding: 1em;
+}

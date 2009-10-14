@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Spike!</title>
+    <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+  </head>
+  <body style="display:none;" ng-entity="person=Person">
+    <h1>Person</h1>
+    <p>[ <a href="PersonList.html">List All People</a> ]</p>
+      First: <input type="text" name="person.firstName"><br>
+      Last: <input type="text" name="person.lastName"><br>
+      Skill:
+         [ <a href="#" ng-action="person.skills.add()">Add Skill</a> ]
+      <ul>
+         <li ng-repeat="skill in person.skills">
+           <input type="text" name="skill.name"> [ <a href="#" ng-action="person.skills.remove(skill)">X</a> ]
+         </li>
+      </ul>
+      <br>
+      <input type="submit" value="Save"/>
+      <hr>
+      <pre>{{person}}</pre>
+  </body>
+</html>

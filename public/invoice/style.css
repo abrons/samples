@@ -1,0 +1,35 @@
+h1 {
+  background-color: #000000;
+  color: #FFFFFF;
+  text-align: right;
+}
+body {
+  background-color:#CCCCCC;
+}
+
+#body {
+  background-color:white;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+}
+
+td {
+  text-align:right;
+}
+
+td.content, th {
+  border: 1px solid #000000;
+}
+
+textarea {
+  width: 100%;
+}
+
+.fields {
+  text-align:right;
+}

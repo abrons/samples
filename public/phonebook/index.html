@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+<title>Internal Company PhoneBook</title>
+<link href="phone.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="display:none;" ng-entity="Employee" ng-init="employees=Employee.all()">
+  <div class="body">
+    <h1>Internal Company PhoneBook</h1>
+    <div class="navigation">
+        [ <a href="Employee.html">add</a> ]<br />
+    </div>
+    <div class="search">
+        Search:
+        <input type="text" name="search"/>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0" class="grid">
+      <tr>
+        <th scope="col" class="image">Picture</th>
+        <th scope="col" class="name">Name</th>
+        <th scope="col" class="manager">Manager</th>
+        <th scope="col" class="manager">Hire</th>
+        <th scope="col" class="manager">Contact</th>
+      </tr>
+      <tr ng-repeat="employee in employees.filter(search)" ng-class-even="'even'" ng-class-odd="'odd'">
+        <td scope="row" class="image">{{employee.picture|image}}</td>
+        <td class="name">
+        	<a href="Employee.html#employee={{employee.$id}}">
+        		{{employee.lastName}}, {{employee.firstName}}</a></td>
+        <td class="manager">
+        	<span ng-show="manager=employees.findById(employee.managerId)">
+	          <a href="Employee.html#employee={{manager.$id}}">
+		        	{{manager.lastName}},
+							{{manager.firstName}}</a>
+        	</span></td>
+        <td class="hidreDate">{{employee.hireDate}}</td>
+        <td class="cantact">
+            <div ng-repeat="phone in employee.phones">{{phone.type}}: {{phone.phone}}</div>
+            <div ng-repeat="email in employee.emails">{{email.type}}: <a href="mailto:{{email.email}}">{{email.email}}</a></div>
+				</td>
+      </tr>
+    </table>
+    <h1>...:::</h1>
+  </div>
+</body>
+</html>
