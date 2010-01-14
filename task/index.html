@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <script src="http://getangular.com/angular-bootstrap.js#database=samples" type="text/javascript"></script>    
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Tasks</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-auth="eager" 
+      ng-entity="task=Task"
+      ng-init="tasks=Task.all();
+      users=['Terron', 'Justin', 'Sam', 'Matt', 'Jeremy', 'Sarah', 'Gabriella', 'Mike'].sort()"
+      style="display:none;" ng-show="true">
+  <div ng-hide="$anchor.task">
+    [ <a href="#" ng-action="$anchor.task = '*'">New Task</a> ]
+  </div>
+  <div class="task" ng-show="$anchor.task">
+    <div>Task Details</div>
+
+    <label>Priority:</label>
+    <select name="task.priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Fire">Fire</option>
+    </select>
+
+    <label>Due:</label>
+    <input name="task.due" ng-widget="datepicker">
+
+    <label>Assignee:</label>
+    <select name="task.assignee">
+      <option value="">-- Choose --</option>
+      <option ng-repeat="user in users">{{user}}</option>
+    </select>
+
+    <label>Status:</label>
+    <select name="task.status">
+      <option value="New">New</option>
+      <option value="Done">Done</option>
+      <option value="Read">Read</option>
+      <option value="Started">Started</option>
+      <option value="Need Help">Need Help</option>
+    </select>
+
+    <label>Description:</label>
+    <textarea name="task.description"></textarea>
+
+    <label>Comments:</label>
+    <ul>
+      <li ng-repeat="comment in task.comments">
+        <a href="#" ng-action="task.comments.$remove(comment)">remove</a>
+        <div>{{comment}}</div>
+      </li>
+    </ul>
+
+    <label><input type="button" value="Add" ng-action="task.comments.$add(comment); comment=''"></label>
+    <div>
+     <textarea class="comment" name="comment"></textarea>
+    </div>
+
+    <label>&nbsp;</label>
+    <div>
+     <input type="submit" value="Save">
+     <input type="button" value="Cancel" ng-action="$anchor.task=null">
+    </div>
+  </div>
+
+  <hr/>
+
+  <div>
+    [ Filter: <input name="taskFilter.$">
+    | User: <select name="taskFilter.assignee">
+      <option value="">-- All --</option>
+      <option value="{{user}}" ng-repeat="user in users">{{user}}</option>
+    </select>
+    | Status: <select name="taskFilter.status">
+      <option value="!Done">Active</option>
+      <option value="New">New</option>
+      <option value="Done">Done</option>
+      <option value="Read">Read</option>
+      <option value="Started">Started</option>
+      <option value="Need Help">Need Help</option>
+    </select>
+    ]
+  </div>
+
+  <table>
+     <tr>
+       <th>Done</th>
+       <th>Due</th>
+       <th>Priority</th>
+       <th>Status</th>
+       <th>Assigned</th>
+       <th>Description</th>
+     </tr>
+     <tr ng-repeat="task in tasks.$filter(taskFilter)" ng-class="task.priority|lowercase">
+       <td>{{task.status == 'Done'}}</td>
+       <td>{{task.due}}</td>
+       <td>{{task.priority}}</td>
+       <td><a href="#task={{task.$id}}">{{task.status}}</a></td>
+       <td>{{task.assignee}}</td>
+       <td><a href="#task={{task.$id}}">{{task.description}}</a></td>
+     </tr>
+  </table>
+
+  <div class="footnote">Powered by &lt;<a href="http://www.getangular.com">angular</a>/&gt;.</div>
+</body>
+</html>
