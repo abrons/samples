@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <script src="http://getangular.com/angular-1.0a.js#database=samples" type="text/javascript"></script>    
+  <script src="http://getangular.com/angular-bootstrap.js#database=samples" type="text/javascript"></script>    
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Tasks</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
@@ -49,12 +49,12 @@
     <label>Comments:</label>
     <ul>
       <li ng-repeat="comment in task.comments">
-        <a href="#" ng-action="task.comments.remove(comment)">remove</a>
+        <a href="#" ng-action="task.comments.$remove(comment)">remove</a>
         <div>{{comment}}</div>
       </li>
     </ul>
 
-    <label><input type="button" value="Add" ng-action="task.comments.add(comment); comment=''"></label>
+    <label><input type="button" value="Add" ng-action="task.comments.$add(comment); comment=''"></label>
     <div>
      <textarea class="comment" name="comment"></textarea>
     </div>
@@ -94,7 +94,7 @@
        <th>Assigned</th>
        <th>Description</th>
      </tr>
-     <tr ng-repeat="task in tasks.filter(taskFilter)" ng-class="task.priority|lowercase">
+     <tr ng-repeat="task in tasks.$filter(taskFilter)" ng-class="task.priority|lowercase">
        <td>{{task.status == 'Done'}}</td>
        <td>{{task.due}}</td>
        <td>{{task.priority}}</td>
